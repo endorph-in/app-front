@@ -59,16 +59,16 @@ export function HomePage({ onNavigate, onBackToWelcome }: HomePageProps) {
               <Button
                 className="font-montserrat px-6 py-3 shadow-lg transition-all duration-300 hover:scale-105"
                 style={{
-                  backgroundColor: "#A8BF84",
-                  color: "#0D0D0D",
+                  backgroundColor: "#0D0D0D",
+                  color: "#FFFFFF",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "#004225"
-                  e.currentTarget.style.color = "#F2F2F2"
+                  e.currentTarget.style.backgroundColor = "#333333"
+                  e.currentTarget.style.color = "#FFFFFF"
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "#A8BF84"
-                  e.currentTarget.style.color = "#0D0D0D"
+                  e.currentTarget.style.backgroundColor = "#0D0D0D"
+                  e.currentTarget.style.color = "#FFFFFF"
                 }}
                 onClick={() => onNavigate("pools")}
               >
@@ -100,8 +100,7 @@ export function HomePage({ onNavigate, onBackToWelcome }: HomePageProps) {
         <div className="space-y-4">
           {/* Aleph Race Pool */}
           <motion.div
-            className="relative overflow-hidden rounded-xl cursor-pointer shadow-lg border-2"
-            style={{ borderColor: "#A8BF84" }}
+            className="relative overflow-hidden rounded-xl cursor-pointer shadow-lg"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -122,9 +121,9 @@ export function HomePage({ onNavigate, onBackToWelcome }: HomePageProps) {
                   <div className="mt-2 flex items-center gap-2">
                     <div
                       className="backdrop-blur-sm px-3 py-1 rounded-full border"
-                      style={{ backgroundColor: "#A8BF84", borderColor: "#004225" }}
+                      style={{ backgroundColor: "#0D0D0D", borderColor: "#0D0D0D" }}
                     >
-                      <span className="text-xs font-montserrat font-medium" style={{ color: "#0D0D0D" }}>
+                      <span className="text-xs font-montserrat font-medium" style={{ color: "#FFFFFF" }}>
                         24 participants
                       </span>
                     </div>
@@ -140,8 +139,7 @@ export function HomePage({ onNavigate, onBackToWelcome }: HomePageProps) {
 
           {/* Adidas Race Pool */}
           <motion.div
-            className="relative overflow-hidden rounded-xl cursor-pointer shadow-lg border-2"
-            style={{ borderColor: "#A69F94" }}
+            className="relative overflow-hidden rounded-xl cursor-pointer shadow-lg"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.5 }}
@@ -166,9 +164,9 @@ export function HomePage({ onNavigate, onBackToWelcome }: HomePageProps) {
                   <div className="mt-2 flex items-center gap-2">
                     <div
                       className="backdrop-blur-sm px-3 py-1 rounded-full border"
-                      style={{ backgroundColor: "#A69F94", borderColor: "#004225" }}
+                      style={{ backgroundColor: "#0D0D0D", borderColor: "#0D0D0D" }}
                     >
-                      <span className="text-xs font-montserrat font-medium" style={{ color: "#0D0D0D" }}>
+                      <span className="text-xs font-montserrat font-medium" style={{ color: "#FFFFFF" }}>
                         18 participants
                       </span>
                     </div>
@@ -239,14 +237,14 @@ export function HomePage({ onNavigate, onBackToWelcome }: HomePageProps) {
           >
             <Card
               className="p-6 cursor-pointer hover:scale-105 transition-all duration-300 border-2 shadow-xl"
-              style={{ borderColor: "#004225", backgroundColor: "#F2F2F2" }}
+              style={{ borderColor: "#A8BF84", backgroundColor: "#F2F2F2" }}
             >
               <div className="flex flex-col items-center text-center gap-3">
                 <div
                   className="w-14 h-14 rounded-full flex items-center justify-center shadow-lg"
-                  style={{ backgroundColor: "#004225" }}
+                  style={{ backgroundColor: "#A8BF84" }}
                 >
-                  <Wallet className="w-7 h-7" style={{ color: "#A8BF84" }} />
+                  <Wallet className="w-7 h-7" style={{ color: "#0D0D0D" }} />
                 </div>
                 <div>
                   <p className="font-semibold font-montserrat text-base" style={{ color: "#004225" }}>
