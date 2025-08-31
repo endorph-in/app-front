@@ -151,13 +151,27 @@ export function DocsPage({ onNavigate }: DocsPageProps) {
         </motion.div>
       </div>
 
-      {/* Call to Action */}
-      <div className="px-6 pt-8">
+      {/* Explanation */}
+      <div className="px-6 pt-6">
         <motion.div
           className="text-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
+        >
+          <p className="text-sm font-montserrat max-w-3xl mx-auto leading-relaxed" style={{ color: "#A69F94" }}>
+            Users deposit USDC into a competition escrow, which swaps into PT-USDe on Pendle (fixed APR) and mints non-transferable sMOL as their receipt. After the window ends, a Flare-verified Strava leaderboard marks winners; the contract burns sMOL and redistributes the entire PT-USDe pot pro-rata to finishers (optionally auto-swapped to USDC) while non-finishers are slashed.
+          </p>
+        </motion.div>
+      </div>
+
+      {/* Call to Action */}
+      <div className="px-6 pt-6">
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
         >
           <Button
             onClick={() => onNavigate("pools")}
