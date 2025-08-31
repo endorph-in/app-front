@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { WagmiProvider } from 'wagmi'
 import { RainbowKitProvider as RKProvider } from '@rainbow-me/rainbowkit'
 import { config } from '../../lib/wagmi'
-import { mainnet } from 'wagmi/chains'
+import { baseSepolia } from 'wagmi/chains'
 
 const queryClient = new QueryClient()
 
@@ -14,6 +14,8 @@ interface RainbowKitProviderProps {
 }
 
 export function RainbowKitProvider({ children }: RainbowKitProviderProps) {
+  const initialChain = baseSepolia
+
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
@@ -76,6 +78,7 @@ export function RainbowKitProvider({ children }: RainbowKitProviderProps) {
           modalSize="compact"
           showRecentTransactions={true}
           coolMode={false}
+          initialChain={initialChain}
         >
           {children}
         </RKProvider>
