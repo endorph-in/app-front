@@ -61,8 +61,8 @@ export function JoinChallengeModal({ isOpen, onClose, challengeName, onJoinChall
                 type="number"
                 value={usdcAmount}
                 onChange={(e) => setUsdcAmount(e.target.value)}
-                className="text-right pr-16 pl-32 h-14 text-lg font-mono border-2"
-                style={{ backgroundColor: "#FFFFFF", borderColor: "#A8BF84", color: "#0D0D0D" }}
+                className="text-right pl-32 h-14 text-lg font-mono border-2"
+                style={{ backgroundColor: "#FFFFFF", borderColor: "#A8BF84", color: "#0D0D0D", paddingRight: "5.5rem" }}
                 placeholder="0"
               />
               <Button

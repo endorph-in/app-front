@@ -6,7 +6,7 @@ import { Card } from "./ui/card"
 import { Header } from "./Header"
 import { ImageWithFallback } from "./figma/ImageWithFallback"
 import { JoinChallengeModal } from "./JoinChallengeModal"
-import { motion, AnimatePresence } from "motion/react"
+import { motion } from "motion/react"
 import { 
   Users, 
   Clock, 
