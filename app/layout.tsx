@@ -14,7 +14,7 @@ const montserrat = Montserrat({
 })
 
 export const metadata: Metadata = {
-  title: "Endorph - Fitness Challenges",
+  title: "Endorphin - Fitness Challenges",
   description: "Join fitness challenges and stake on yourself",
   generator: "v0.app",
   viewport: {
