@@ -74,8 +74,8 @@ export function RainbowKitProvider({ children }: RainbowKitProviderProps) {
             },
           }}
           modalSize="compact"
-          initialChain={mainnet}
           showRecentTransactions={true}
+          coolMode={false}
         >
           {children}
         </RKProvider>

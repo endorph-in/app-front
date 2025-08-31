@@ -5,10 +5,9 @@ import { Button } from "./ui/button"
 import { Input } from "./ui/input"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog"
 import { ChallengeRewardsInfo } from "./ChallengeRewardsInfo"
+import { JoinPoolButton } from "./JoinPoolButton"
 import { motion } from "motion/react"
-import { HelpCircle, Loader2 } from "lucide-react"
-import { useJoinEscrow } from "../hooks/useJoinEscrow"
-import { USDC_ADDRESS, ESCROW_ADDRESS, validateContractAddresses } from "../lib/contracts"
+import { HelpCircle } from "lucide-react"
 
 interface JoinChallengeModalProps {
   isOpen: boolean
@@ -19,64 +18,29 @@ interface JoinChallengeModalProps {
 
 export function JoinChallengeModal({ isOpen, onClose, challengeName, onJoinChallenge }: JoinChallengeModalProps) {
   const [usdcAmount, setUsdcAmount] = useState("0")
-  const [isClosing, setIsClosing] = useState(false)
-  const { executeJoin, isLoading, status, error, address, chainId } = useJoinEscrow()
-
-  const handleProceed = async () => {
-    if (!address) {
-      alert("Please connect your wallet first")
-      return
-    }
-
-    const amount = parseFloat(usdcAmount)
-    if (amount <= 0) {
-      alert("Please enter a valid amount")
-      return
-    }
-
-    try {
-      // Validate contract addresses
-      validateContractAddresses(chainId)
-      
-      await executeJoin({
-        usdcAddress: USDC_ADDRESS,
-        escrowAddress: ESCROW_ADDRESS,
-        amount: usdcAmount,
-        onSuccess: (result) => {
-          console.log("Successfully joined pool:", result)
-          onJoinChallenge(amount)
-          setIsClosing(true)
-          setTimeout(() => {
-            onClose()
-            setIsClosing(false)
-          }, 2000)
-        },
-        onError: (err) => {
-          console.error("Failed to join pool:", err)
-        },
-      })
-    } catch (err) {
-      console.error("Contract validation error:", err)
-      alert(err instanceof Error ? err.message : "Configuration error")
-    }
-  }
 
   const handleMaxClick = () => {
     setUsdcAmount("100.0")
   }
 
+  const handleSuccess = (result: any) => {
+    const amount = parseFloat(usdcAmount)
+    onJoinChallenge(amount)
+    onClose()
+    
+    // Aquí puedes llamar a tu backend para actualizar el estado del pool
+    console.log("Pool joined successfully:", result)
+  }
+
+  const handleError = (error: string) => {
+    console.error("Failed to join pool:", error)
+    // Manejar error sin cerrar el modal
+  }
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-md p-0 overflow-hidden" style={{ backgroundColor: "#F2F2F2", borderColor: "#A8BF84", color: "#0D0D0D" }}>
-        <style jsx>{`
-          [data-slot="dialog-content"] > button {
-            color: #A69F94 !important;
-          }
-          [data-slot="dialog-content"] > button:hover {
-            color: #004225 !important;
-            background-color: #A8BF84 !important;
-          }
-        `}</style>
+        {/* Header */}
         <DialogHeader className="p-6 pb-4">
           <DialogTitle className="text-xl font-montserrat font-medium">
             Join {challengeName}
@@ -84,6 +48,7 @@ export function JoinChallengeModal({ isOpen, onClose, challengeName, onJoinChall
         </DialogHeader>
 
         <div className="px-6 pb-6 space-y-6">
+          {/* USDC Amount Input */}
           <div className="space-y-2">
             <div className="relative">
               <div className="absolute left-4 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
@@ -98,6 +63,7 @@ export function JoinChallengeModal({ isOpen, onClose, challengeName, onJoinChall
                 value={usdcAmount}
                 onChange={(e) => {
                   const value = e.target.value
+                  // Solo permitir números y un punto decimal
                   if (/^\d*\.?\d*$/.test(value)) {
                     setUsdcAmount(value)
                   }
@@ -130,6 +96,7 @@ export function JoinChallengeModal({ isOpen, onClose, challengeName, onJoinChall
             </div>
           </div>
 
+          {/* Transaction Details */}
           <motion.div
             className="space-y-3 text-sm"
             initial={{ opacity: 0, y: 10 }}
@@ -155,81 +122,17 @@ export function JoinChallengeModal({ isOpen, onClose, challengeName, onJoinChall
             </div>
           </motion.div>
 
+          {/* Challenge Rewards Info */}
           <ChallengeRewardsInfo />
 
-          {/* Status Display */}
-          {status && (
-            <div className="text-center py-2">
-              <p className="text-sm font-montserrat" style={{ 
-                color: status.includes("Successfully") ? "#004225" : "#A8BF84" 
-              }}>
-                {status}
-                {status.includes("Successfully") && (
-                  <span className="block text-xs mt-1" style={{ color: "#A69F94" }}>
-                    Cerrando en 2 segundos...
-                  </span>
-                )}
-              </p>
-            </div>
-          )}
-
-          {/* Error Display */}
-          {error && (
-            <div className="text-center py-2">
-              <p className="text-sm font-montserrat" style={{ color: "#DC2626" }}>
-                {error}
-              </p>
-            </div>
-          )}
-
-          {/* Wallet not connected warning */}
-          {!address && (
-            <div className="text-center py-2">
-              <p className="text-sm font-montserrat" style={{ color: "#A69F94" }}>
-                Please connect your wallet to proceed
-              </p>
-            </div>
-          )}
-
-          {/* Debug info */}
-          {address && (
-            <div className="text-center py-1">
-              <p className="text-xs font-montserrat" style={{ color: "#A69F94" }}>
-                Network: {chainId} | Wallet: {address.slice(0, 6)}...{address.slice(-4)}
-              </p>
-            </div>
-          )}
-
-          <Button
-            onClick={handleProceed}
-            disabled={isLoading || !address || !usdcAmount || parseFloat(usdcAmount) <= 0}
-            className="w-full h-12 font-montserrat font-medium text-lg rounded-lg disabled:opacity-50"
-            style={{ 
-              backgroundColor: isLoading ? "#A69F94" : "#A8BF84", 
-              color: "#0D0D0D" 
-            }}
-            onMouseEnter={(e) => {
-              if (!isLoading) {
-                e.currentTarget.style.backgroundColor = "#004225"
-                e.currentTarget.style.color = "#F2F2F2"
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (!isLoading) {
-                e.currentTarget.style.backgroundColor = "#A8BF84"
-                e.currentTarget.style.color = "#0D0D0D"
-              }
-            }}
-          >
-            {isLoading ? (
-              <div className="flex items-center gap-2">
-                <Loader2 className="w-4 h-4 animate-spin" />
-                Processing...
-              </div>
-            ) : (
-              "Proceed"
-            )}
-          </Button>
+          {/* Join Pool Button - Reemplaza el botón Proceed original */}
+          <JoinPoolButton
+            amount={usdcAmount}
+            poolName={challengeName}
+            onSuccess={handleSuccess}
+            onError={handleError}
+            disabled={!usdcAmount || parseFloat(usdcAmount) <= 0}
+          />
         </div>
       </DialogContent>
     </Dialog>
