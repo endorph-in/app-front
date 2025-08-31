@@ -64,29 +64,29 @@ export function WelcomePage({ onStartNow }: WelcomePageProps) {
       {/* Background Image - Full Screen */}
       <div className="absolute inset-0 z-0">
         <motion.img
-          src="/running-athlete-bw.png"
+          src="/probando-primera-4.jpeg"
           alt="Athletic person running"
           className="w-full h-full object-cover object-center"
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/50"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/80"></div>
       </div>
 
       {/* Main Content - Moved lower as requested */}
-      <div className="relative z-10 flex-1 flex flex-col justify-end px-6 pb-32">
+      <div className="relative z-10 flex-1 flex flex-col justify-start px-6 pt-12">
         <motion.div
-          className="mb-8"
+          className="mb-6"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.3, type: "spring", damping: 20 }}
         >
           <motion.h1
-            className="leading-none mb-3 font-michroma"
+            className="leading-none mb-2 font-michroma"
             style={{
               fontWeight: 400,
-              fontSize: "80px",
+              fontSize: "65px",
               letterSpacing: "0.02em",
               color: "#A8BF84", // Direct green color
             }}
@@ -97,10 +97,10 @@ export function WelcomePage({ onStartNow }: WelcomePageProps) {
             stake
           </motion.h1>
           <motion.h1
-            className="leading-none mb-3 font-michroma"
+            className="leading-none mb-2 font-michroma"
             style={{
               fontWeight: 400,
-              fontSize: "80px",
+              fontSize: "65px",
               letterSpacing: "0.02em",
               color: "#A8BF84", // Direct green color
             }}
@@ -114,7 +114,7 @@ export function WelcomePage({ onStartNow }: WelcomePageProps) {
             className="leading-none font-michroma"
             style={{
               fontWeight: 400,
-              fontSize: "80px",
+              fontSize: "65px",
               letterSpacing: "0.02em",
               color: "#A8BF84", // Direct green color
             }}

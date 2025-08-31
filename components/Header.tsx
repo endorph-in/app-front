@@ -36,7 +36,7 @@ export function Header({ title, showBack, onBack, onNavigate }: HeaderProps) {
                 letterSpacing: "0.02em",
               }}
             >
-              endorphines
+              endorphins
             </h1>
           </div>
         </div>

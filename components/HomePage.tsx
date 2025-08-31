@@ -104,7 +104,7 @@ export function HomePage({ onNavigate, onBackToWelcome }: HomePageProps) {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            onClick={() => onNavigate("race-details")}
+            onClick={() => onNavigate("aleph-race-details")}
             whileHover={{ scale: 1.02, y: -2 }}
             whileTap={{ scale: 0.98 }}
           >
@@ -143,7 +143,7 @@ export function HomePage({ onNavigate, onBackToWelcome }: HomePageProps) {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            onClick={() => onNavigate("pools", "adidas-race")}
+            onClick={() => onNavigate("adidas-race-details")}
             whileHover={{ scale: 1.02, y: -2 }}
             whileTap={{ scale: 0.98 }}
           >

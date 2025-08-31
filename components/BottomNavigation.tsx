@@ -10,6 +10,15 @@ interface BottomNavigationProps {
 }
 
 export function BottomNavigation({ currentPage, onNavigate }: BottomNavigationProps) {
+  // Mapear páginas de detalles a su página padre para la navegación
+  const getActiveNavItem = (page: string) => {
+    if (page === "aleph-race-details" || page === "adidas-race-details") {
+      return "home"
+    }
+    return page
+  }
+  
+  const activeNavItem = getActiveNavItem(currentPage)
   const navItems = [
     { id: "home", icon: Home, label: "Home" },
     { id: "pools", icon: Users, label: "Pools" },
@@ -25,13 +34,19 @@ export function BottomNavigation({ currentPage, onNavigate }: BottomNavigationPr
             key={item.id}
             variant="ghost"
             size="sm"
-            className={`flex flex-col gap-1 h-auto py-2 font-montserrat ${
-              currentPage === item.id ? "text-primary" : "text-muted-foreground"
+            className={`flex flex-col gap-1 h-auto py-2 px-3 font-montserrat transition-all duration-300 rounded-xl ${
+              activeNavItem === item.id ? "" : "hover:bg-muted/50"
             }`}
+            style={currentPage === item.id ? { 
+              backgroundColor: "rgba(168, 191, 132, 0.2)", 
+              color: "#004225" 
+            } : { 
+              color: "#0D0D0D" 
+            }}
             onClick={() => onNavigate(item.id)}
           >
             <item.icon className="w-5 h-5" />
-            <span className="text-xs">{item.label}</span>
+            <span className="text-xs font-medium">{item.label}</span>
           </Button>
         ))}
 
@@ -45,13 +60,19 @@ export function BottomNavigation({ currentPage, onNavigate }: BottomNavigationPr
             key={item.id}
             variant="ghost"
             size="sm"
-            className={`flex flex-col gap-1 h-auto py-2 font-montserrat ${
-              currentPage === item.id ? "text-primary" : "text-muted-foreground"
+            className={`flex flex-col gap-1 h-auto py-2 px-3 font-montserrat transition-all duration-300 rounded-xl ${
+              activeNavItem === item.id ? "" : "hover:bg-muted/50"
             }`}
+            style={currentPage === item.id ? { 
+              backgroundColor: "rgba(168, 191, 132, 0.2)", 
+              color: "#004225" 
+            } : { 
+              color: "#0D0D0D" 
+            }}
             onClick={() => onNavigate(item.id)}
           >
             <item.icon className="w-5 h-5" />
-            <span className="text-xs">{item.label}</span>
+            <span className="text-xs font-medium">{item.label}</span>
           </Button>
         ))}
       </div>
