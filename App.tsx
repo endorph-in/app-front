@@ -8,6 +8,7 @@ import { GoalsPage } from "./components/GoalsPage"
 import { StatsPage } from "./components/StatsPage"
 import { ChallengeDetailPage } from "./components/ChallengeDetailPage"
 import { RaceDetailsPage } from "./components/RaceDetailsPage"
+import { DocsPage } from "./components/DocsPage"
 import { BottomNavigation } from "./components/BottomNavigation"
 import { PageTransition } from "./components/PageTransition"
 
@@ -66,6 +67,8 @@ export default function App() {
         return <StatsPage onNavigate={handleNavigate} />
       case "race-details":
         return <RaceDetailsPage onNavigate={handleNavigate} onBack={handleBack} />
+      case "docs":
+        return <DocsPage onNavigate={handleNavigate} />
       default:
         return <WelcomePage onStartNow={handleStartNow} />
     }

@@ -15,7 +15,7 @@ interface HomePageProps {
 export function HomePage({ onNavigate, onBackToWelcome }: HomePageProps) {
   return (
     <div className="min-h-screen bg-background pb-20 font-montserrat">
-      <Header showBack={!!onBackToWelcome} onBack={onBackToWelcome} />
+      <Header showBack={!!onBackToWelcome} onBack={onBackToWelcome} onNavigate={onNavigate} />
 
       {/* Hero Section with Background Image */}
       <div className="relative px-6 py-4">
