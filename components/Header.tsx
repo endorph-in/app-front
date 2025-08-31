@@ -29,12 +29,13 @@ export function Header({ title, showBack, onBack, onNavigate }: HeaderProps) {
               <EndorphinsLogo size="sm" />
             </div>
             <h1
-              className="text-accent font-michroma"
+              className="text-accent font-michroma cursor-pointer hover:opacity-80 transition-opacity"
               style={{
                 fontSize: "18px",
                 fontWeight: 400,
                 letterSpacing: "0.02em",
               }}
+              onClick={() => onNavigate && onNavigate("about")}
             >
               endorphins
             </h1>
