@@ -205,3 +205,58 @@ html {
 .font-montserrat {
   font-family: var(--font-montserrat) !important;
 }
+
+/* Mobile-first design - Fuerza vista móvil en desktop */
+.mobile-container {
+  width: 100%;
+  max-width: 430px; /* Ancho máximo de iPhone 14 Pro Max */
+  margin: 0 auto;
+  min-height: 100vh;
+  background: var(--background);
+  position: relative;
+  overflow: hidden; /* Evita que el contenido se salga del contenedor */
+}
+
+/* En desktop, simula un teléfono */
+@media (min-width: 768px) {
+  body {
+    background: #1a1a1a; /* Fondo oscuro para simular escritorio */
+    padding: 20px 0;
+  }
+  
+  .mobile-container {
+    border-radius: 24px;
+    box-shadow: 
+      0 0 0 8px #2a2a2a,
+      0 0 50px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    border: 2px solid #333;
+    min-height: calc(100vh - 40px);
+  }
+}
+
+/* Barra de navegación que se adapta al contenedor móvil */
+.mobile-nav-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  border-top: 1px solid var(--border);
+  padding: 12px 24px;
+  height: 80px;
+  z-index: 50;
+}
+
+/* En desktop, la barra se posiciona relativa al contenedor móvil */
+@media (min-width: 768px) {
+  .mobile-nav-bar {
+    position: absolute; /* Cambiado de fixed a absolute */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%; /* Ocupa todo el ancho del contenedor móvil */
+    transform: none; /* Removemos el transform */
+    border-radius: 0 0 20px 20px; /* Bordes redondeados que coinciden con el contenedor */
+  }
+}

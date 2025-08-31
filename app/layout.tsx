@@ -14,9 +14,15 @@ const montserrat = Montserrat({
 })
 
 export const metadata: Metadata = {
-  title: "Stake On You - Fitness App",
-  description: "Your personal fitness motivation app",
+  title: "Endorph - Fitness Challenges",
+  description: "Join fitness challenges and stake on yourself",
   generator: "v0.app",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
 }
 
 export default function RootLayout({
@@ -30,9 +36,11 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Michroma:wght@400&display=swap" rel="stylesheet" />
       </head>
       <body className={`${montserrat.variable} font-michroma antialiased`}>
-        <RainbowKitProvider>
-          <Suspense fallback={null}>{children}</Suspense>
-        </RainbowKitProvider>
+        <div className="mobile-container">
+          <RainbowKitProvider>
+            <Suspense fallback={null}>{children}</Suspense>
+          </RainbowKitProvider>
+        </div>
         <Analytics />
       </body>
     </html>

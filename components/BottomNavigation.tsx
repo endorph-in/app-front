@@ -44,7 +44,7 @@ export function BottomNavigation({ currentPage, onNavigate }: BottomNavigationPr
   }
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-border px-6 py-3 h-20 z-50">
+    <div className="mobile-nav-bar">
       <div className="relative flex justify-around items-center h-full">
         {/* Indicador cuadrado deslizante animado */}
         <motion.div
