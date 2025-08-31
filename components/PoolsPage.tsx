@@ -98,149 +98,263 @@ export function PoolsPage({ onNavigate, selectedPool }: PoolsPageProps) {
   ]
 
   return (
-    <div className="min-h-screen bg-background pb-20 font-montserrat">
+    <div className="min-h-screen pb-20 font-montserrat" style={{ backgroundColor: "#F2F2F2" }}>
       <Header title="Pools" showBack onBack={() => onNavigate("home")} />
 
       {/* Search and Create */}
       <div className="px-6 py-4 space-y-4">
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-          <Input placeholder="Search pools..." className="pl-10 bg-white" />
-        </div>
+        <motion.div 
+          className="relative"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4" style={{ color: "#A69F94" }} />
+          <Input 
+            placeholder="Search pools..." 
+            className="pl-10 border-2 shadow-sm"
+            style={{ 
+              backgroundColor: "#FFFFFF", 
+              borderColor: "#A8BF84",
+              color: "#0D0D0D"
+            }}
+          />
+        </motion.div>
 
-        <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90 font-montserrat shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-102">
-          <Plus className="w-4 h-4 mr-2" />
-          Create New Pool
-        </Button>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          <Button 
+            className="w-full h-14 font-montserrat shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-102"
+            style={{
+              backgroundColor: "#A8BF84",
+              color: "#0D0D0D",
+              fontWeight: 500,
+              fontSize: "16px"
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "#004225"
+              e.currentTarget.style.color = "#F2F2F2"
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "#A8BF84"
+              e.currentTarget.style.color = "#0D0D0D"
+            }}
+          >
+            <Plus className="w-4 h-4 mr-2" />
+            Create New Pool
+          </Button>
+        </motion.div>
       </div>
 
       {/* My Active Pools */}
       <div className="px-6 pb-6">
-        <h2
-          className="mb-3 text-accent font-michroma"
-          style={{ fontSize: "20px", fontWeight: 400, letterSpacing: "0.02em" }}
+        <motion.h2
+          className="mb-4 font-michroma"
+          style={{
+            fontSize: "22px",
+            fontWeight: 400,
+            letterSpacing: "0.02em",
+            color: "#004225",
+          }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
           active pools
-        </h2>
-        <div className="space-y-3">
-          {activePools.map((pool) => (
-            <Card
+        </motion.h2>
+        <div className="space-y-4">
+          {activePools.map((pool, index) => (
+            <motion.div
               key={pool.id}
-              className="p-4 border border-primary/20 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-102 bg-card"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
             >
-              <div className="flex items-start justify-between mb-3">
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1">
-                    <h4 className="font-medium font-montserrat text-foreground">{pool.name}</h4>
-                    <Badge variant="secondary" className="text-xs bg-primary text-primary-foreground font-montserrat">
-                      Active
-                    </Badge>
-                  </div>
-                  <p className="text-sm text-muted-foreground mb-2">{pool.goal}</p>
+              <Card
+                className="p-6 border-2 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-102"
+                style={{ 
+                  borderColor: "#A8BF84", 
+                  backgroundColor: "#FFFFFF" 
+                }}
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-2">
+                      <h4 className="font-semibold font-montserrat text-lg" style={{ color: "#004225" }}>
+                        {pool.name}
+                      </h4>
+                      <div
+                        className="px-3 py-1 rounded-full"
+                        style={{ backgroundColor: "#A8BF84" }}
+                      >
+                        <span className="text-xs font-montserrat font-medium" style={{ color: "#0D0D0D" }}>
+                          Active
+                        </span>
+                      </div>
+                    </div>
+                    <p className="text-sm font-montserrat mb-3" style={{ color: "#A69F94" }}>
+                      {pool.goal}
+                    </p>
 
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
-                    <div className="flex items-center gap-1">
-                      <Users className="w-4 h-4" />
-                      <span>{pool.participants} members</span>
+                    <div className="flex items-center gap-4 text-sm mb-4" style={{ color: "#A69F94" }}>
+                      <div className="flex items-center gap-1">
+                        <Users className="w-4 h-4" />
+                        <span className="font-montserrat">{pool.participants} members</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <TrendingUp className="w-4 h-4" />
+                        <span className="font-montserrat">{pool.totalStaked} Molecules</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Clock className="w-4 h-4" />
+                        <span className="font-montserrat">{pool.deadline}</span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-1">
-                      <TrendingUp className="w-4 h-4" />
-                      <span>{pool.totalStaked} Molecules</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="w-4 h-4" />
-                      <span>{pool.deadline}</span>
-                    </div>
-                  </div>
 
-                  <div className="space-y-1">
-                    <div className="flex justify-between text-sm">
-                      <span>Pool Progress</span>
-                      <span>{pool.progress}%</span>
+                    <div className="space-y-2">
+                      <div className="flex justify-between text-sm">
+                        <span className="font-montserrat" style={{ color: "#004225" }}>Pool Progress</span>
+                        <span className="font-michroma" style={{ color: "#004225" }}>{pool.progress}%</span>
+                      </div>
+                      <Progress value={pool.progress} className="h-3" />
                     </div>
-                    <Progress value={pool.progress} className="h-2" />
                   </div>
                 </div>
-              </div>
 
-              <div className="flex items-center justify-between">
-                <div className="flex gap-2">
-                  <Avatar className="w-6 h-6">
-                    <AvatarFallback className="text-xs">A</AvatarFallback>
-                  </Avatar>
-                  <Avatar className="w-6 h-6">
-                    <AvatarFallback className="text-xs">B</AvatarFallback>
-                  </Avatar>
-                  <Avatar className="w-6 h-6">
-                    <AvatarFallback className="text-xs">C</AvatarFallback>
-                  </Avatar>
-                  <div className="w-6 h-6 bg-muted rounded-full flex items-center justify-center">
-                    <span className="text-xs">+{pool.participants - 3}</span>
+                <div className="flex items-center justify-between">
+                  <div className="flex gap-2">
+                    <Avatar className="w-8 h-8 border-2" style={{ borderColor: "#A8BF84" }}>
+                      <AvatarFallback className="text-xs font-montserrat" style={{ backgroundColor: "#A8BF84", color: "#0D0D0D" }}>A</AvatarFallback>
+                    </Avatar>
+                    <Avatar className="w-8 h-8 border-2" style={{ borderColor: "#A8BF84" }}>
+                      <AvatarFallback className="text-xs font-montserrat" style={{ backgroundColor: "#A8BF84", color: "#0D0D0D" }}>B</AvatarFallback>
+                    </Avatar>
+                    <Avatar className="w-8 h-8 border-2" style={{ borderColor: "#A8BF84" }}>
+                      <AvatarFallback className="text-xs font-montserrat" style={{ backgroundColor: "#A8BF84", color: "#0D0D0D" }}>C</AvatarFallback>
+                    </Avatar>
+                    <div 
+                      className="w-8 h-8 rounded-full flex items-center justify-center border-2"
+                      style={{ backgroundColor: "#F2F2F2", borderColor: "#A8BF84" }}
+                    >
+                      <span className="text-xs font-montserrat" style={{ color: "#004225" }}>+{pool.participants - 3}</span>
+                    </div>
                   </div>
+                  <Button 
+                    className="font-montserrat shadow-md hover:shadow-lg transition-all duration-300"
+                    style={{
+                      backgroundColor: "#0D0D0D",
+                      color: "#FFFFFF",
+                      fontWeight: 500
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = "#333333"
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = "#0D0D0D"
+                    }}
+                  >
+                    View Details
+                  </Button>
                 </div>
-                <Button variant="outline" size="sm">
-                  View Details
-                </Button>
-              </div>
-            </Card>
+              </Card>
+            </motion.div>
           ))}
         </div>
       </div>
 
       {/* Discover Pools */}
       <div className="px-6">
-        <h2
-          className="mb-3 text-accent font-michroma"
-          style={{ fontSize: "20px", fontWeight: 400, letterSpacing: "0.02em" }}
+        <motion.h2
+          className="mb-4 font-michroma"
+          style={{
+            fontSize: "22px",
+            fontWeight: 400,
+            letterSpacing: "0.02em",
+            color: "#004225",
+          }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
         >
           discover
-        </h2>
+        </motion.h2>
 
         {/* Sponsored Pools */}
         <div className="space-y-4 mb-6">
-          {sponsoredPools.map((pool) => (
+          {sponsoredPools.map((pool, index) => (
             <motion.div
               key={pool.id}
-              className={`relative overflow-hidden rounded-xl ${
-                selectedPool === pool.id ? "ring-2 ring-accent ring-offset-2" : ""
+              className={`relative overflow-hidden rounded-xl shadow-xl ${
+                selectedPool === pool.id ? "ring-2 ring-offset-2 ring-[#A8BF84]" : ""
               }`}
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: selectedPool === pool.id ? 1.02 : 1 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <div className="relative h-32">
+              <div className="relative h-40">
                 <ImageWithFallback
                   src={pool.image || "/placeholder.svg"}
                   alt={pool.sponsor}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-accent/80 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-accent/85 via-primary/60 to-transparent"></div>
 
                 <div className="absolute inset-0 p-4 flex flex-col justify-between">
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-2">
-                      <Badge className="bg-accent-foreground text-accent font-montserrat">
-                        <Star className="w-3 h-3 mr-1" />
-                        Sponsored
-                      </Badge>
+                      <div
+                        className="backdrop-blur-sm px-3 py-1 rounded-full border flex items-center gap-1"
+                        style={{ backgroundColor: "#0D0D0D", borderColor: "#0D0D0D" }}
+                      >
+                        <Star className="w-3 h-3" style={{ color: "#A8BF84" }} />
+                        <span className="text-xs font-montserrat font-medium" style={{ color: "#FFFFFF" }}>
+                          Sponsored
+                        </span>
+                      </div>
                       {selectedPool === pool.id && (
-                        <Badge className="bg-primary text-primary-foreground font-montserrat">Selected</Badge>
+                        <div
+                          className="px-3 py-1 rounded-full"
+                          style={{ backgroundColor: "#A8BF84" }}
+                        >
+                          <span className="text-xs font-montserrat font-medium" style={{ color: "#0D0D0D" }}>
+                            Selected
+                          </span>
+                        </div>
                       )}
                     </div>
                   </div>
 
                   <div>
-                    <h3 className="text-accent-foreground font-montserrat font-medium mb-1">{pool.name}</h3>
-                    <p className="text-accent-foreground/80 text-sm font-montserrat mb-2">{pool.goal}</p>
+                    <h3 className="text-white font-montserrat font-semibold mb-1 text-lg drop-shadow-md">
+                      {pool.name}
+                    </h3>
+                    <p className="text-white/90 text-sm font-montserrat drop-shadow-sm mb-2">
+                      {pool.goal}
+                    </p>
 
                     <div className="flex items-center justify-between">
-                      <div className="flex gap-4 text-xs text-accent-foreground/80">
-                        <span>{pool.participants} participants</span>
-                        <span>{pool.totalStaked} molecules</span>
+                      <div className="flex gap-4 text-xs text-white/80">
+                        <span className="font-montserrat">{pool.participants} participants</span>
+                        <span className="font-montserrat">{pool.totalStaked} molecules</span>
                       </div>
                       <Button
-                        size="sm"
-                        className="bg-accent-foreground text-accent hover:bg-accent-foreground/90 font-montserrat"
+                        className="font-montserrat shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                        style={{
+                          backgroundColor: "#0D0D0D",
+                          color: "#FFFFFF",
+                          fontWeight: 500
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = "#333333"
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = "#0D0D0D"
+                        }}
                       >
                         Join Pool
                       </Button>
@@ -253,62 +367,93 @@ export function PoolsPage({ onNavigate, selectedPool }: PoolsPageProps) {
         </div>
 
         {/* Regular Available Pools */}
-        <div className="space-y-3">
-          {availablePools.map((pool) => (
-            <Card
+        <div className="space-y-4">
+          {availablePools.map((pool, index) => (
+            <motion.div
               key={pool.id}
-              className="p-4 border border-primary/20 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-102 bg-card"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
             >
-              <div className="flex items-start justify-between mb-3">
-                <div className="flex-1">
-                  <h4 className="font-medium mb-1 font-montserrat">{pool.name}</h4>
-                  <p className="text-sm text-muted-foreground mb-2 font-montserrat">{pool.goal}</p>
+              <Card
+                className="p-6 border-2 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-102"
+                style={{ 
+                  borderColor: "#A8BF84", 
+                  backgroundColor: "#FFFFFF" 
+                }}
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex-1">
+                    <h4 className="font-semibold font-montserrat text-lg mb-2" style={{ color: "#004225" }}>
+                      {pool.name}
+                    </h4>
+                    <p className="text-sm font-montserrat mb-3" style={{ color: "#A69F94" }}>
+                      {pool.goal}
+                    </p>
 
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
-                    <div className="flex items-center gap-1">
-                      <Users className="w-4 h-4" />
-                      <span className="font-montserrat">{pool.participants} members</span>
+                    <div className="flex items-center gap-4 text-sm mb-3" style={{ color: "#A69F94" }}>
+                      <div className="flex items-center gap-1">
+                        <Users className="w-4 h-4" />
+                        <span className="font-montserrat">{pool.participants} members</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <TrendingUp className="w-4 h-4" />
+                        <span className="font-montserrat">{pool.totalStaked} Molecules</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Clock className="w-4 h-4" />
+                        <span className="font-montserrat">{pool.deadline}</span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-1">
-                      <TrendingUp className="w-4 h-4" />
-                      <span className="font-montserrat">{pool.totalStaked} Molecules</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="w-4 h-4" />
-                      <span className="font-montserrat">{pool.deadline}</span>
-                    </div>
-                  </div>
 
-                  <div className="flex items-center gap-2">
-                    <Target className="w-4 h-4 text-primary" />
-                    <span className="text-sm font-montserrat">Min. stake: {pool.minStake} Molecules</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <div className="flex gap-2">
-                  <Avatar className="w-6 h-6">
-                    <AvatarFallback className="text-xs font-montserrat">X</AvatarFallback>
-                  </Avatar>
-                  <Avatar className="w-6 h-6">
-                    <AvatarFallback className="text-xs font-montserrat">Y</AvatarFallback>
-                  </Avatar>
-                  <Avatar className="w-6 h-6">
-                    <AvatarFallback className="text-xs font-montserrat">Z</AvatarFallback>
-                  </Avatar>
-                  <div className="w-6 h-6 bg-muted rounded-full flex items-center justify-center">
-                    <span className="text-xs font-montserrat">+{pool.participants - 3}</span>
+                    <div className="flex items-center gap-2">
+                      <Target className="w-4 h-4" style={{ color: "#A8BF84" }} />
+                      <span className="text-sm font-montserrat" style={{ color: "#004225" }}>
+                        Min. stake: <span className="font-michroma">{pool.minStake}</span> Molecules
+                      </span>
+                    </div>
                   </div>
                 </div>
-                <Button
-                  size="sm"
-                  className="bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground transition-all duration-300 font-montserrat"
-                >
-                  Join Pool
-                </Button>
-              </div>
-            </Card>
+
+                <div className="flex items-center justify-between">
+                  <div className="flex gap-2">
+                    <Avatar className="w-8 h-8 border-2" style={{ borderColor: "#A8BF84" }}>
+                      <AvatarFallback className="text-xs font-montserrat" style={{ backgroundColor: "#A8BF84", color: "#0D0D0D" }}>X</AvatarFallback>
+                    </Avatar>
+                    <Avatar className="w-8 h-8 border-2" style={{ borderColor: "#A8BF84" }}>
+                      <AvatarFallback className="text-xs font-montserrat" style={{ backgroundColor: "#A8BF84", color: "#0D0D0D" }}>Y</AvatarFallback>
+                    </Avatar>
+                    <Avatar className="w-8 h-8 border-2" style={{ borderColor: "#A8BF84" }}>
+                      <AvatarFallback className="text-xs font-montserrat" style={{ backgroundColor: "#A8BF84", color: "#0D0D0D" }}>Z</AvatarFallback>
+                    </Avatar>
+                    <div 
+                      className="w-8 h-8 rounded-full flex items-center justify-center border-2"
+                      style={{ backgroundColor: "#F2F2F2", borderColor: "#A8BF84" }}
+                    >
+                      <span className="text-xs font-montserrat" style={{ color: "#004225" }}>+{pool.participants - 3}</span>
+                    </div>
+                  </div>
+                  <Button
+                    className="font-montserrat shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
+                    style={{
+                      backgroundColor: "#A8BF84",
+                      color: "#0D0D0D",
+                      fontWeight: 500
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = "#004225"
+                      e.currentTarget.style.color = "#F2F2F2"
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = "#A8BF84"
+                      e.currentTarget.style.color = "#0D0D0D"
+                    }}
+                  >
+                    Join Pool
+                  </Button>
+                </div>
+              </Card>
+            </motion.div>
           ))}
         </div>
       </div>
