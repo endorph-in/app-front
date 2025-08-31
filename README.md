@@ -2,6 +2,13 @@
 
 A decentralized fitness challenge platform where users can stake on themselves and earn rewards by completing fitness goals. Built with Next.js, RainbowKit, and wagmi.
 
+## 🔗 Quick Links
+
+- **🚀 Live Demo**: [Endorphin App](https://app-front-swart.vercel.app)
+- **🎥 Demo Video**: [Watch on YouTube](https://www.youtube.com/watch?v=GK_6HG5MuQM&ab_channel=Endorphin32)
+- **📚 Documentation**: [Project Notion](https://www.notion.so/Endorphines-25fb26df980e805cb30ce7861eeb1887)
+- **⚙️ Backend Repository**: [Endorphin Backend](https://github.com/orgs/endorph-in/repositories)
+
 ## 🌟 Features
 
 - **🎯 Fitness Challenges**: Join various fitness challenges and stake USDC on yourself
@@ -10,11 +17,6 @@ A decentralized fitness challenge platform where users can stake on themselves a
 - **🔗 Web3 Integration**: Connect with MetaMask and other wallets via RainbowKit
 - **🏆 Rewards System**: Earn rewards for completing challenges
 - **⚡ Real-time Updates**: Live progress tracking and updates
-
-## 🔗 Related Repositories
-
-- **Backend API**: [Endorphin Backend](https://github.com/orgs/endorph-in/repositories) - Smart contracts and API services
-- **Frontend (This repo)**: Web application and user interface
 
 ## 🚀 Quick Start
 
@@ -117,11 +119,6 @@ pnpm lint
 3. Commit your changes (`git commit -m 'Add amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
-
-## 🔗 Links
-
-- **Live Demo**: [Endorphin App](https://app-front-swart.vercel.app)
-- **Backend Repository**: [Endorphin Backend](https://github.com/orgs/endorph-in/repositories)
 
 ---
 
