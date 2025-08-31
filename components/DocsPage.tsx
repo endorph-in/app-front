@@ -13,7 +13,7 @@ interface DocsPageProps {
 export function DocsPage({ onNavigate }: DocsPageProps) {
   return (
     <div className="min-h-screen bg-background pb-20 font-montserrat">
-      <Header title="How Endorphin Works" showBack onBack={() => onNavigate("home")} />
+      <Header title="How Endorphin Works" showBack onBack={() => onNavigate("home")} onNavigate={onNavigate} />
 
       {/* Hero Section */}
       <div className="px-6 py-6">

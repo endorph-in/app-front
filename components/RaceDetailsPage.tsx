@@ -48,7 +48,7 @@ export function RaceDetailsPage({ onNavigate, onBack }: RaceDetailsPageProps) {
 
   return (
     <div className="min-h-screen bg-background pb-20 font-montserrat">
-      <Header showBack={true} onBack={onBack} />
+      <Header showBack={true} onBack={onBack} onNavigate={onNavigate} />
 
       <div className="relative px-6 py-4">
         <motion.div
@@ -62,7 +62,7 @@ export function RaceDetailsPage({ onNavigate, onBack }: RaceDetailsPageProps) {
             alt="Aleph Race" 
             className="w-full h-full object-cover" 
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-accent/90 via-primary/70 to-accent/40"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40"></div>
 
           <div className="absolute inset-0 flex flex-col justify-center px-6">
             <motion.h1

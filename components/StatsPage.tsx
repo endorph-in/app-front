@@ -71,7 +71,7 @@ export function StatsPage({ onNavigate }: StatsPageProps) {
 
   return (
     <div className="min-h-screen bg-background pb-20 font-montserrat">
-      <Header title="Statistics" showBack onBack={() => onNavigate("home")} />
+              <Header title="Statistics" showBack onBack={() => onNavigate("home")} onNavigate={onNavigate} />
 
       {/* Monthly Overview */}
       <div className="px-6 py-4">

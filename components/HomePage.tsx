@@ -82,7 +82,7 @@ export function HomePage({ onNavigate, onBackToWelcome }: HomePageProps) {
           transition={{ duration: 0.6 }}
         >
           <ImageWithFallback src="/primera-foto.jpg" alt="Runners at sunset" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-accent/90 via-primary/70 to-accent/40"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/20"></div>
 
           <div className="absolute inset-0 flex flex-col justify-center px-6">
             <motion.h1
@@ -163,7 +163,7 @@ export function HomePage({ onNavigate, onBackToWelcome }: HomePageProps) {
           >
             <div className="relative h-36">
               <ImageWithFallback src="/aleph-race-image.jpg" alt="Aleph race runners" className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-r from-accent/85 via-primary/60 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40"></div>
 
               <div className="absolute inset-0 flex items-center justify-between px-4">
                 <div>
@@ -205,7 +205,7 @@ export function HomePage({ onNavigate, onBackToWelcome }: HomePageProps) {
                 alt="Adidas race stretching"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/85 via-accent/60 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40"></div>
 
               <div className="absolute inset-0 flex items-center justify-between px-4">
                 <div>
@@ -329,8 +329,7 @@ export function HomePage({ onNavigate, onBackToWelcome }: HomePageProps) {
 
       <div className="px-6">
         <motion.div
-          className="relative overflow-hidden rounded-xl shadow-xl border-2"
-          style={{ borderColor: "#A8BF84" }}
+          className="relative overflow-hidden rounded-xl shadow-xl"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.9 }}
@@ -341,7 +340,7 @@ export function HomePage({ onNavigate, onBackToWelcome }: HomePageProps) {
               alt="Your progress background"
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-accent/95 via-primary/80 to-accent/60"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/20"></div>
 
             <div className="absolute inset-0 flex items-center justify-between px-6">
               <div>

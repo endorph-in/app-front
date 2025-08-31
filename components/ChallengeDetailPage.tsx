@@ -113,7 +113,7 @@ export function ChallengeDetailPage({ onNavigate, challengeId }: ChallengeDetail
   if (!challenge) {
     return (
       <div className="min-h-screen bg-background pb-20 font-montserrat">
-        <Header title="Challenge Not Found" showBack onBack={() => onNavigate("home")} />
+        <Header title="Challenge Not Found" showBack onBack={() => onNavigate("home")} onNavigate={onNavigate} />
         <div className="px-6 py-8 text-center">
           <p className="text-muted-foreground">El desafío solicitado no fue encontrado.</p>
           <Button onClick={() => onNavigate("home")} className="mt-4">
@@ -140,7 +140,7 @@ export function ChallengeDetailPage({ onNavigate, challengeId }: ChallengeDetail
 
   return (
     <div className="min-h-screen bg-background pb-20 font-montserrat">
-      <Header title="Challenge Details" showBack onBack={() => onNavigate("home")} />
+              <Header title="Challenge Details" showBack onBack={() => onNavigate("home")} onNavigate={onNavigate} />
 
       {/* Hero Section */}
       <div className="px-6 py-4">
