@@ -8,6 +8,7 @@ import { GoalsPage } from "./components/GoalsPage"
 import { StatsPage } from "./components/StatsPage"
 import { ChallengeDetailPage } from "./components/ChallengeDetailPage"
 import { RaceDetailsPage } from "./components/RaceDetailsPage"
+import { DocsPage } from "./components/DocsPage"
 import { AdidasRaceDetailsPage } from "./components/AdidasRaceDetailsPage"
 import { BottomNavigation } from "./components/BottomNavigation"
 import { PageTransition } from "./components/PageTransition"
@@ -67,6 +68,8 @@ export default function App() {
         return <StatsPage onNavigate={handleNavigate} />
       case "aleph-race-details":
         return <RaceDetailsPage onNavigate={handleNavigate} onBack={handleBack} />
+      case "docs":
+        return <DocsPage onNavigate={handleNavigate} />
       case "adidas-race-details":
         return <AdidasRaceDetailsPage onNavigate={handleNavigate} onBack={handleBack} />
       default:

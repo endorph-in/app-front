@@ -2,7 +2,7 @@
 
 import { Button } from "./ui/button"
 import { Avatar, AvatarFallback } from "./ui/avatar"
-import { Settings, ArrowLeft } from "lucide-react"
+import { Settings, ArrowLeft, HelpCircle } from "lucide-react"
 import { EndorphinsLogo } from "./EndorphinsLogo"
 import { ImageWithFallback } from "./figma/ImageWithFallback"
 
@@ -10,9 +10,10 @@ interface HeaderProps {
   title?: string
   showBack?: boolean
   onBack?: () => void
+  onNavigate?: (page: string) => void
 }
 
-export function Header({ title, showBack, onBack }: HeaderProps) {
+export function Header({ title, showBack, onBack, onNavigate }: HeaderProps) {
   return (
     <div className="px-6 py-4 bg-white font-montserrat">
       <div className="flex items-center justify-between">
@@ -50,6 +51,17 @@ export function Header({ title, showBack, onBack }: HeaderProps) {
               />
               <AvatarFallback>U</AvatarFallback>
             </Avatar>
+          )}
+          {onNavigate && (
+            <Button 
+              variant="ghost" 
+              size="icon"
+              onClick={() => onNavigate("docs")}
+              title="How it works"
+              style={{ color: "#004225" }}
+            >
+              <HelpCircle className="w-5 h-5" />
+            </Button>
           )}
           <Button variant="ghost" size="icon">
             <Settings className="w-5 h-5" />
