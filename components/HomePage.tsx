@@ -25,7 +25,7 @@ export function HomePage({ onNavigate, onBackToWelcome }: HomePageProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <ImageWithFallback src="/runners-sunset.png" alt="Runners at sunset" className="w-full h-full object-cover" />
+          <ImageWithFallback src="/primera-foto.jpg" alt="Runners at sunset" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-accent/90 via-primary/70 to-accent/40"></div>
 
           {/* Hero Content */}
@@ -98,25 +98,25 @@ export function HomePage({ onNavigate, onBackToWelcome }: HomePageProps) {
         </motion.h2>
 
         <div className="space-y-4">
-          {/* Adidas Sponsor Pool */}
+          {/* Aleph Race Pool */}
           <motion.div
             className="relative overflow-hidden rounded-xl cursor-pointer shadow-lg border-2"
             style={{ borderColor: "#A8BF84" }}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            onClick={() => onNavigate("challenge-detail", "adidas-run-challenge")}
+            onClick={() => onNavigate("race-details")}
             whileHover={{ scale: 1.02, y: -2 }}
             whileTap={{ scale: 0.98 }}
           >
             <div className="relative h-36">
-              <ImageWithFallback src="/group-running.png" alt="Group running" className="w-full h-full object-cover" />
+              <ImageWithFallback src="/aleph-race-image.jpg" alt="Aleph race runners" className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-r from-accent/85 via-primary/60 to-transparent"></div>
 
               <div className="absolute inset-0 flex items-center justify-between px-4">
                 <div>
                   <h3 className="text-white font-montserrat font-semibold mb-1 text-lg drop-shadow-md">
-                    Adidas Run Challenge
+                    Aleph Race
                   </h3>
                   <p className="text-white/90 text-sm font-montserrat drop-shadow-sm">Sponsored pool • 500 molecules</p>
                   <div className="mt-2 flex items-center gap-2">
@@ -138,21 +138,21 @@ export function HomePage({ onNavigate, onBackToWelcome }: HomePageProps) {
             </div>
           </motion.div>
 
-          {/* Rexona Sponsor Pool */}
+          {/* Adidas Race Pool */}
           <motion.div
             className="relative overflow-hidden rounded-xl cursor-pointer shadow-lg border-2"
             style={{ borderColor: "#A69F94" }}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            onClick={() => onNavigate("challenge-detail", "rexona-fitness-challenge")}
+            onClick={() => onNavigate("pools", "adidas-race")}
             whileHover={{ scale: 1.02, y: -2 }}
             whileTap={{ scale: 0.98 }}
           >
             <div className="relative h-36">
               <ImageWithFallback
-                src="/athlete-jumping.png"
-                alt="Athlete jumping"
+                src="/adidas-race-image.jpg"
+                alt="Adidas race stretching"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-primary/85 via-accent/60 to-transparent"></div>
@@ -160,7 +160,7 @@ export function HomePage({ onNavigate, onBackToWelcome }: HomePageProps) {
               <div className="absolute inset-0 flex items-center justify-between px-4">
                 <div>
                   <h3 className="text-white font-montserrat font-semibold mb-1 text-lg drop-shadow-md">
-                    Rexona Fitness Challenge
+                    Adidas Race
                   </h3>
                   <p className="text-white/90 text-sm font-montserrat drop-shadow-sm">Sponsored pool • 300 molecules</p>
                   <div className="mt-2 flex items-center gap-2">
@@ -273,8 +273,8 @@ export function HomePage({ onNavigate, onBackToWelcome }: HomePageProps) {
         >
           <div className="relative h-28">
             <ImageWithFallback
-              src="/runners-sunset.png"
-              alt="Runners at sunset"
+              src="/ultima.jpeg"
+              alt="Your progress background"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-accent/95 via-primary/80 to-accent/60"></div>

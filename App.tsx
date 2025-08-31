@@ -7,6 +7,7 @@ import { PoolsPage } from "./components/PoolsPage"
 import { GoalsPage } from "./components/GoalsPage"
 import { StatsPage } from "./components/StatsPage"
 import { ChallengeDetailPage } from "./components/ChallengeDetailPage"
+import { RaceDetailsPage } from "./components/RaceDetailsPage"
 import { BottomNavigation } from "./components/BottomNavigation"
 import { PageTransition } from "./components/PageTransition"
 
@@ -14,14 +15,22 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState("welcome")
   const [hasSeenWelcome, setHasSeenWelcome] = useState(false)
   const [selectedPool, setSelectedPool] = useState<string | null>(null)
+  const [pageHistory, setPageHistory] = useState<string[]>([])
 
   const handleNavigate = (page: string, poolId?: string) => {
+    setPageHistory(prev => [...prev, currentPage])
     setCurrentPage(page)
     if (poolId) {
       setSelectedPool(poolId)
     } else {
       setSelectedPool(null)
     }
+  }
+
+  const handleBack = () => {
+    const previousPage = pageHistory[pageHistory.length - 1] || "home"
+    setPageHistory(prev => prev.slice(0, -1))
+    setCurrentPage(previousPage)
   }
 
   const handleStartNow = () => {
@@ -55,6 +64,8 @@ export default function App() {
         return <GoalsPage onNavigate={handleNavigate} />
       case "stats":
         return <StatsPage onNavigate={handleNavigate} />
+      case "race-details":
+        return <RaceDetailsPage onNavigate={handleNavigate} onBack={handleBack} />
       default:
         return <WelcomePage onStartNow={handleStartNow} />
     }
@@ -65,7 +76,7 @@ export default function App() {
       <PageTransition pageKey={currentPage} direction={getPageDirection(currentPage)}>
         {renderCurrentPage()}
       </PageTransition>
-      {currentPage !== "welcome" && <BottomNavigation currentPage={currentPage} onNavigate={handleNavigate} />}
+      {currentPage !== "welcome" && currentPage !== "race-details" && <BottomNavigation currentPage={currentPage} onNavigate={handleNavigate} />}
     </div>
   )
 }
