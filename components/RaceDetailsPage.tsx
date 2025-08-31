@@ -38,10 +38,12 @@ export function RaceDetailsPage({ onNavigate, onBack }: RaceDetailsPageProps) {
   const handleConfirmRegistration = () => {
     setIsRegistered(true)
     setShowRegistrationDialog(false)
+    // Here you would typically make an API call to register the user
   }
 
   const handleJoinChallenge = (amount: number) => {
-    console.log(`Joining Aleph Race with ${amount} USDC`)
+    // Aquí manejarías la lógica de unirse al desafío
+    console.log(`Joining Aleph Run Club with ${amount} USDC`)
     setIsRegistered(true)
     setIsJoinModalOpen(false)
   }
@@ -50,6 +52,7 @@ export function RaceDetailsPage({ onNavigate, onBack }: RaceDetailsPageProps) {
     <div className="min-h-screen bg-background pb-20 font-montserrat">
       <Header showBack={true} onBack={onBack} onNavigate={onNavigate} />
 
+      {/* Hero Banner */}
       <div className="relative px-6 py-4">
         <motion.div
           className="relative h-56 rounded-xl overflow-hidden shadow-xl"
@@ -59,11 +62,12 @@ export function RaceDetailsPage({ onNavigate, onBack }: RaceDetailsPageProps) {
         >
           <ImageWithFallback 
             src="/aleph-race-image.jpg" 
-            alt="Aleph Race" 
+            alt="Aleph Run Club" 
             className="w-full h-full object-cover" 
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40"></div>
 
+          {/* Hero Content */}
           <div className="absolute inset-0 flex flex-col justify-center px-6">
             <motion.h1
               className="text-white mb-2 font-michroma drop-shadow-lg"
@@ -76,7 +80,7 @@ export function RaceDetailsPage({ onNavigate, onBack }: RaceDetailsPageProps) {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              aleph race
+              Aleph Run Club
             </motion.h1>
             <motion.p
               className="text-white/95 mb-4 font-montserrat text-lg drop-shadow-md"
@@ -84,14 +88,16 @@ export function RaceDetailsPage({ onNavigate, onBack }: RaceDetailsPageProps) {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              15km weekly challenge
+              5km weekly challenge
             </motion.p>
           </div>
         </motion.div>
       </div>
 
+      {/* Stats Cards */}
       <div className="px-6 pb-6">
         <div className="grid grid-cols-2 gap-4 mb-6">
+          {/* Participants */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -112,6 +118,7 @@ export function RaceDetailsPage({ onNavigate, onBack }: RaceDetailsPageProps) {
             </Card>
           </motion.div>
 
+          {/* Duration */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -133,6 +140,7 @@ export function RaceDetailsPage({ onNavigate, onBack }: RaceDetailsPageProps) {
           </motion.div>
         </div>
 
+        {/* APR Card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -147,17 +155,14 @@ export function RaceDetailsPage({ onNavigate, onBack }: RaceDetailsPageProps) {
                 </div>
                 <div>
                   <p className="text-sm font-montserrat text-muted-foreground">Annual Percentage Rate</p>
-                  <p className="text-2xl font-michroma font-bold" style={{ color: "#004225" }}>12.5%</p>
+                  <p className="text-2xl font-michroma font-bold" style={{ color: "#004225" }}>4.5%</p>
                 </div>
-              </div>
-              <div className="text-right">
-                <p className="text-xs font-montserrat text-muted-foreground">Expected return</p>
-                <p className="text-sm font-montserrat font-medium" style={{ color: "#A8BF84" }}>+62.5 molecules</p>
               </div>
             </div>
           </Card>
         </motion.div>
 
+        {/* Total Value Locked */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -176,14 +181,11 @@ export function RaceDetailsPage({ onNavigate, onBack }: RaceDetailsPageProps) {
                   <p className="text-sm font-montserrat text-muted-foreground">molecules</p>
                 </div>
               </div>
-              <div className="text-right">
-                <p className="text-xs font-montserrat text-muted-foreground">Prize pool</p>
-                <p className="text-sm font-montserrat font-medium" style={{ color: "#A8BF84" }}>Winner takes 60%</p>
-              </div>
             </div>
           </Card>
         </motion.div>
 
+        {/* Race Details */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -210,7 +212,7 @@ export function RaceDetailsPage({ onNavigate, onBack }: RaceDetailsPageProps) {
               <div className="flex items-center gap-2">
                 <Target className="w-4 h-4" style={{ color: "#A8BF84" }} />
                 <p className="text-sm font-montserrat">
-                  <span className="font-semibold">Goal:</span> Complete 15km within 7 days to qualify for rewards
+                  <span className="font-semibold">Goal:</span> Complete 5km within 7 days to qualify for rewards
                 </p>
               </div>
               <div className="flex items-center gap-2">
@@ -229,6 +231,7 @@ export function RaceDetailsPage({ onNavigate, onBack }: RaceDetailsPageProps) {
           </Card>
         </motion.div>
 
+        {/* Let's Go Button */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -258,11 +261,12 @@ export function RaceDetailsPage({ onNavigate, onBack }: RaceDetailsPageProps) {
         </motion.div>
       </div>
 
+      {/* Registration Dialog */}
       <Dialog open={showRegistrationDialog} onOpenChange={setShowRegistrationDialog}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
             <DialogTitle className="font-michroma text-xl" style={{ color: "#004225" }}>
-              Register for Aleph Race
+              Register for Aleph Run Club
             </DialogTitle>
           </DialogHeader>
           
@@ -273,7 +277,7 @@ export function RaceDetailsPage({ onNavigate, onBack }: RaceDetailsPageProps) {
               </div>
               <h3 className="text-lg font-montserrat font-semibold mb-2">Join the Challenge</h3>
               <p className="text-sm font-montserrat text-muted-foreground mb-4">
-                You're about to join 24 other participants in the Aleph Race challenge. 
+                You're about to join 24 other participants in the Aleph Run Club challenge. 
                 Complete 15km within 7 days to earn rewards!
               </p>
             </div>
@@ -316,10 +320,11 @@ export function RaceDetailsPage({ onNavigate, onBack }: RaceDetailsPageProps) {
         </DialogContent>
       </Dialog>
 
+      {/* Join Challenge Modal */}
       <JoinChallengeModal
         isOpen={isJoinModalOpen}
         onClose={() => setIsJoinModalOpen(false)}
-        challengeName="Adidas Run Challenge"
+        challengeName="Aleph Run Club"
         onJoinChallenge={handleJoinChallenge}
       />
     </div>
