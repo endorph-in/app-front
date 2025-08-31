@@ -108,7 +108,7 @@ export function PoolsPage({ onNavigate, selectedPool }: PoolsPageProps) {
       
       {/* Contenido principal */}
       <div className="relative z-10">
-        <Header title="Pools" showBack onBack={() => onNavigate("home")} />
+        <Header title="Pools" showBack onBack={() => onNavigate("home")} onNavigate={onNavigate} />
 
         {/* Hero Section */}
         <div className="px-6 py-6">

@@ -31,8 +31,10 @@ export function WelcomePage({ onStartNow }: WelcomePageProps) {
   }, [])
   return (
     <div className="relative min-h-screen flex flex-col bg-black overflow-hidden">
+
+
       {/* Top right Endorphins logo */}
-      <div className="absolute top-16 right-6 z-20">
+      <div className="absolute top-8 right-6 z-20">
         <motion.div
           initial={{ opacity: 0, scale: 0.3, rotate: -180 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}

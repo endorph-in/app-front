@@ -101,7 +101,7 @@ export function GoalsPage({ onNavigate }: GoalsPageProps) {
 
   return (
     <div className="min-h-screen bg-background pb-20 font-montserrat">
-      <Header title="Goals" showBack onBack={() => onNavigate("home")} />
+              <Header title="Goals" showBack onBack={() => onNavigate("home")} onNavigate={onNavigate} />
 
       {/* Create Goal Button */}
       <div className="px-6 py-4">
