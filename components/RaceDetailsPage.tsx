@@ -5,6 +5,7 @@ import { Button } from "./ui/button"
 import { Card } from "./ui/card"
 import { Header } from "./Header"
 import { ImageWithFallback } from "./figma/ImageWithFallback"
+import { JoinChallengeModal } from "./JoinChallengeModal"
 import { motion, AnimatePresence } from "motion/react"
 import { 
   Users, 
@@ -27,16 +28,25 @@ interface RaceDetailsPageProps {
 
 export function RaceDetailsPage({ onNavigate, onBack }: RaceDetailsPageProps) {
   const [showRegistrationDialog, setShowRegistrationDialog] = useState(false)
+  const [isJoinModalOpen, setIsJoinModalOpen] = useState(false)
   const [isRegistered, setIsRegistered] = useState(false)
 
   const handleRegister = () => {
-    setShowRegistrationDialog(true)
+    setIsJoinModalOpen(true)
   }
 
   const handleConfirmRegistration = () => {
     setIsRegistered(true)
     setShowRegistrationDialog(false)
     // Here you would typically make an API call to register the user
+  }
+
+  const handleJoinChallenge = (amount: number) => {
+    // Aquí manejarías la lógica de unirse al desafío
+    console.log(`Joining challenge with ${amount} USDC`)
+    setIsRegistered(true)
+    setIsJoinModalOpen(false)
+    // Después de unirse exitosamente, podrías navegar o mostrar confirmación
   }
 
   return (
@@ -318,6 +328,14 @@ export function RaceDetailsPage({ onNavigate, onBack }: RaceDetailsPageProps) {
           </div>
         </DialogContent>
       </Dialog>
+
+      {/* Join Challenge Modal */}
+      <JoinChallengeModal
+        isOpen={isJoinModalOpen}
+        onClose={() => setIsJoinModalOpen(false)}
+        challengeName="Adidas Run Challenge"
+        onJoinChallenge={handleJoinChallenge}
+      />
     </div>
   )
 }
