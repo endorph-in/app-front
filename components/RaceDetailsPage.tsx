@@ -38,11 +38,9 @@ export function RaceDetailsPage({ onNavigate, onBack }: RaceDetailsPageProps) {
   const handleConfirmRegistration = () => {
     setIsRegistered(true)
     setShowRegistrationDialog(false)
-    // Here you would typically make an API call to register the user
   }
 
   const handleJoinChallenge = (amount: number) => {
-    // Aquí manejarías la lógica de unirse al desafío
     console.log(`Joining Aleph Race with ${amount} USDC`)
     setIsRegistered(true)
     setIsJoinModalOpen(false)
@@ -52,7 +50,6 @@ export function RaceDetailsPage({ onNavigate, onBack }: RaceDetailsPageProps) {
     <div className="min-h-screen bg-background pb-20 font-montserrat">
       <Header showBack={true} onBack={onBack} />
 
-      {/* Hero Banner */}
       <div className="relative px-6 py-4">
         <motion.div
           className="relative h-56 rounded-xl overflow-hidden shadow-xl"
@@ -67,7 +64,6 @@ export function RaceDetailsPage({ onNavigate, onBack }: RaceDetailsPageProps) {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-accent/90 via-primary/70 to-accent/40"></div>
 
-          {/* Hero Content */}
           <div className="absolute inset-0 flex flex-col justify-center px-6">
             <motion.h1
               className="text-white mb-2 font-michroma drop-shadow-lg"
@@ -94,10 +90,8 @@ export function RaceDetailsPage({ onNavigate, onBack }: RaceDetailsPageProps) {
         </motion.div>
       </div>
 
-      {/* Stats Cards */}
       <div className="px-6 pb-6">
         <div className="grid grid-cols-2 gap-4 mb-6">
-          {/* Participants */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -118,7 +112,6 @@ export function RaceDetailsPage({ onNavigate, onBack }: RaceDetailsPageProps) {
             </Card>
           </motion.div>
 
-          {/* Duration */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -140,7 +133,6 @@ export function RaceDetailsPage({ onNavigate, onBack }: RaceDetailsPageProps) {
           </motion.div>
         </div>
 
-        {/* APR Card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -166,7 +158,6 @@ export function RaceDetailsPage({ onNavigate, onBack }: RaceDetailsPageProps) {
           </Card>
         </motion.div>
 
-        {/* Total Value Locked */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -193,7 +184,6 @@ export function RaceDetailsPage({ onNavigate, onBack }: RaceDetailsPageProps) {
           </Card>
         </motion.div>
 
-        {/* Race Details */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -239,7 +229,6 @@ export function RaceDetailsPage({ onNavigate, onBack }: RaceDetailsPageProps) {
           </Card>
         </motion.div>
 
-        {/* Let's Go Button */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -269,7 +258,6 @@ export function RaceDetailsPage({ onNavigate, onBack }: RaceDetailsPageProps) {
         </motion.div>
       </div>
 
-      {/* Registration Dialog */}
       <Dialog open={showRegistrationDialog} onOpenChange={setShowRegistrationDialog}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
@@ -328,7 +316,6 @@ export function RaceDetailsPage({ onNavigate, onBack }: RaceDetailsPageProps) {
         </DialogContent>
       </Dialog>
 
-      {/* Join Challenge Modal */}
       <JoinChallengeModal
         isOpen={isJoinModalOpen}
         onClose={() => setIsJoinModalOpen(false)}

@@ -40,7 +40,6 @@ export function JoinChallengeModal({ isOpen, onClose, challengeName, onJoinChall
             background-color: #A8BF84 !important;
           }
         `}</style>
-        {/* Header */}
         <DialogHeader className="p-6 pb-4">
           <DialogTitle className="text-xl font-montserrat font-medium">
             Join {challengeName}
@@ -48,7 +47,6 @@ export function JoinChallengeModal({ isOpen, onClose, challengeName, onJoinChall
         </DialogHeader>
 
         <div className="px-6 pb-6 space-y-6">
-          {/* USDC Amount Input */}
           <div className="space-y-2">
             <div className="relative">
               <div className="absolute left-4 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
@@ -58,9 +56,19 @@ export function JoinChallengeModal({ isOpen, onClose, challengeName, onJoinChall
                 <span className="text-sm font-medium" style={{ color: "#A8BF84" }}>USDC amount</span>
               </div>
               <Input
-                type="number"
+                type="text"
+                inputMode="decimal"
                 value={usdcAmount}
-                onChange={(e) => setUsdcAmount(e.target.value)}
+                onChange={(e) => {
+                  const value = e.target.value
+                  if (/^\d*\.?\d*$/.test(value)) {
+                    setUsdcAmount(value)
+                  }
+                }}
+                onContextMenu={(e) => e.preventDefault()}
+                onFocus={(e) => {
+                  e.target.select()
+                }}
                 className="text-right pl-32 h-14 text-lg font-mono border-2"
                 style={{ backgroundColor: "#FFFFFF", borderColor: "#A8BF84", color: "#0D0D0D", paddingRight: "5.5rem" }}
                 placeholder="0"
@@ -85,7 +93,6 @@ export function JoinChallengeModal({ isOpen, onClose, challengeName, onJoinChall
             </div>
           </div>
 
-          {/* Transaction Details */}
           <motion.div
             className="space-y-3 text-sm"
             initial={{ opacity: 0, y: 10 }}
@@ -111,10 +118,8 @@ export function JoinChallengeModal({ isOpen, onClose, challengeName, onJoinChall
             </div>
           </motion.div>
 
-          {/* Challenge Rewards Info */}
           <ChallengeRewardsInfo />
 
-          {/* Proceed Button */}
           <Button
             onClick={handleProceed}
             className="w-full h-12 font-montserrat font-medium text-lg rounded-lg"

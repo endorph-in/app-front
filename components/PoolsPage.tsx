@@ -98,11 +98,43 @@ export function PoolsPage({ onNavigate, selectedPool }: PoolsPageProps) {
   ]
 
   return (
-    <div className="min-h-screen pb-20 font-montserrat" style={{ backgroundColor: "#F2F2F2" }}>
-      <Header title="Pools" showBack onBack={() => onNavigate("home")} />
+    <div className="min-h-screen pb-32 font-montserrat relative overflow-hidden">
+      {/* Fondo con gradiente */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-green-50 to-yellow-50"></div>
+      
+      {/* Elementos decorativos de fondo */}
+      <div className="absolute top-20 right-0 w-64 h-64 bg-gradient-to-bl from-green-200/30 to-transparent rounded-full blur-3xl"></div>
+      <div className="absolute bottom-40 left-0 w-48 h-48 bg-gradient-to-tr from-blue-200/30 to-transparent rounded-full blur-2xl"></div>
+      
+      {/* Contenido principal */}
+      <div className="relative z-10">
+        <Header title="Pools" showBack onBack={() => onNavigate("home")} />
 
-      {/* Search and Create */}
-      <div className="px-6 py-4 space-y-4">
+        {/* Hero Section */}
+        <div className="px-6 py-6">
+          <motion.div
+            className="relative rounded-2xl overflow-hidden shadow-xl mb-6"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="relative h-32 bg-gradient-to-r from-green-400 via-blue-500 to-purple-600">
+              <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
+              <div className="absolute inset-0 flex items-center justify-between px-6">
+                <div>
+                  <h2 className="text-white font-michroma text-lg mb-1">Discover Pools</h2>
+                  <p className="text-white/90 font-montserrat text-sm">Join challenges, stake molecules, earn rewards</p>
+                </div>
+                <div className="bg-white/20 backdrop-blur-sm rounded-full p-3">
+                  <Users className="w-8 h-8 text-white" />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Search and Create */}
+        <div className="px-6 pb-4 space-y-4">
         <motion.div 
           className="relative"
           initial={{ opacity: 0, y: 20 }}
@@ -174,10 +206,11 @@ export function PoolsPage({ onNavigate, selectedPool }: PoolsPageProps) {
               transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
             >
               <Card
-                className="p-6 border-2 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-102"
+                className="p-6 border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-102"
                 style={{ 
-                  borderColor: "#A8BF84", 
-                  backgroundColor: "#FFFFFF" 
+                  backgroundColor: "#FFFFFF",
+                  border: "1px solid rgba(168, 191, 132, 0.2)",
+                  borderRadius: "16px"
                 }}
               >
                 <div className="flex items-start justify-between mb-4">
@@ -214,12 +247,27 @@ export function PoolsPage({ onNavigate, selectedPool }: PoolsPageProps) {
                       </div>
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="space-y-3 mt-4">
                       <div className="flex justify-between text-sm">
-                        <span className="font-montserrat" style={{ color: "#004225" }}>Pool Progress</span>
-                        <span className="font-michroma" style={{ color: "#004225" }}>{pool.progress}%</span>
+                        <span className="font-montserrat font-medium" style={{ color: "#004225" }}>Progress</span>
+                        <span className="font-michroma font-semibold" style={{ color: "#004225" }}>{pool.progress}%</span>
                       </div>
-                      <Progress value={pool.progress} className="h-3" />
+                      <div className="relative">
+                        <Progress 
+                          value={pool.progress} 
+                          className="h-4 bg-gray-200 rounded-full overflow-hidden"
+                          style={{
+                            backgroundColor: "#E5E7EB"
+                          }}
+                        />
+                        <div 
+                          className="absolute top-0 left-0 h-full rounded-full transition-all duration-300"
+                          style={{
+                            width: `${pool.progress}%`,
+                            background: "linear-gradient(90deg, #A8BF84 0%, #004225 100%)"
+                          }}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -376,10 +424,11 @@ export function PoolsPage({ onNavigate, selectedPool }: PoolsPageProps) {
               transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
             >
               <Card
-                className="p-6 border-2 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-102"
+                className="p-6 border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-102"
                 style={{ 
-                  borderColor: "#A8BF84", 
-                  backgroundColor: "#FFFFFF" 
+                  backgroundColor: "#FFFFFF",
+                  border: "1px solid rgba(168, 191, 132, 0.2)",
+                  borderRadius: "16px"
                 }}
               >
                 <div className="flex items-start justify-between mb-4">
@@ -457,6 +506,9 @@ export function PoolsPage({ onNavigate, selectedPool }: PoolsPageProps) {
           ))}
         </div>
       </div>
+      </div>
+      {/* Espaciador adicional para la navegación */}
+      <div className="h-8"></div>
     </div>
   )
 }

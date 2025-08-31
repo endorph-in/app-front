@@ -20,16 +20,13 @@ export function WelcomePage({ onStartNow }: WelcomePageProps) {
   ]
 
   useEffect(() => {
-    // Seleccionar imagen inicial aleatoria
     const randomIndex = Math.floor(Math.random() * images.length)
     setCurrentImageIndex(randomIndex)
 
-    // Cambiar imagen cada 3 segundos
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length)
     }, 3000)
 
-    // Limpiar interval al desmontar el componente
     return () => clearInterval(interval)
   }, [])
   return (
@@ -115,7 +112,7 @@ export function WelcomePage({ onStartNow }: WelcomePageProps) {
               fontWeight: 400,
               fontSize: "65px",
               letterSpacing: "0.02em",
-              color: "#A8BF84", // Direct green color
+              color: "#A8BF84",
             }}
             initial={{ opacity: 0, x: -30, rotateY: -90 }}
             animate={{ opacity: 1, x: 0, rotateY: 0 }}
@@ -129,7 +126,7 @@ export function WelcomePage({ onStartNow }: WelcomePageProps) {
               fontWeight: 400,
               fontSize: "65px",
               letterSpacing: "0.02em",
-              color: "#A8BF84", // Direct green color
+              color: "#A8BF84",
             }}
             initial={{ opacity: 0, x: -30, rotateY: -90 }}
             animate={{ opacity: 1, x: 0, rotateY: 0 }}
@@ -143,7 +140,7 @@ export function WelcomePage({ onStartNow }: WelcomePageProps) {
               fontWeight: 400,
               fontSize: "65px",
               letterSpacing: "0.02em",
-              color: "#A8BF84", // Direct green color
+              color: "#A8BF84",
             }}
             initial={{ opacity: 0, x: -30, rotateY: -90 }}
             animate={{ opacity: 1, x: 0, rotateY: 0 }}
@@ -183,16 +180,16 @@ export function WelcomePage({ onStartNow }: WelcomePageProps) {
             style={{
               fontWeight: 500,
               fontSize: "16px",
-              backgroundColor: "#A8BF84", // Green background
-              color: "#0D0D0D", // Dark text
+              backgroundColor: "#A8BF84",
+              color: "#0D0D0D",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "#004225" // Dark green on hover
-              e.currentTarget.style.color = "#F2F2F2" // Light text on hover
+              e.currentTarget.style.backgroundColor = "#004225"
+              e.currentTarget.style.color = "#F2F2F2"
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = "#A8BF84" // Back to green
-              e.currentTarget.style.color = "#0D0D0D" // Back to dark text
+              e.currentTarget.style.backgroundColor = "#A8BF84"
+              e.currentTarget.style.color = "#0D0D0D"
             }}
           >
             Start Now

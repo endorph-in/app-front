@@ -134,9 +134,7 @@ export function ChallengeDetailPage({ onNavigate, challengeId }: ChallengeDetail
   }
 
   const handleJoinChallenge = (amount: number) => {
-    // Aquí manejarías la lógica de unirse al desafío
     console.log(`Joining challenge ${challengeId} with ${amount} ETH`)
-    // Después de unirse exitosamente, navegar a pools
     onNavigate("pools", challengeId)
   }
 

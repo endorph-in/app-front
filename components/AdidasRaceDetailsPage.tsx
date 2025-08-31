@@ -37,22 +37,18 @@ export function AdidasRaceDetailsPage({ onNavigate, onBack }: AdidasRaceDetailsP
   const handleConfirmRegistration = () => {
     setIsRegistered(true)
     setShowRegistrationDialog(false)
-    // Here you would typically make an API call to register the user
   }
 
   const handleJoinChallenge = (amount: number) => {
-    // Aquí manejarías la lógica de unirse al desafío
     console.log(`Joining Adidas Race with ${amount} USDC`)
     setIsRegistered(true)
     setIsJoinModalOpen(false)
-    // Después de unirse exitosamente, podrías navegar o mostrar confirmación
   }
 
   return (
     <div className="min-h-screen bg-background pb-20 font-montserrat">
       <Header showBack={true} onBack={onBack} />
 
-      {/* Hero Section */}
       <div className="relative px-6 py-4">
         <motion.div
           className="relative h-56 rounded-xl overflow-hidden shadow-xl"
@@ -67,7 +63,6 @@ export function AdidasRaceDetailsPage({ onNavigate, onBack }: AdidasRaceDetailsP
           />
           <div className="absolute inset-0 bg-gradient-to-r from-primary/85 via-accent/60 to-transparent"></div>
 
-          {/* Hero Content */}
           <div className="absolute inset-0 flex flex-col justify-between p-6">
             <div className="flex items-start justify-between">
               <div className="flex items-center gap-2">
@@ -120,9 +115,7 @@ export function AdidasRaceDetailsPage({ onNavigate, onBack }: AdidasRaceDetailsP
         </motion.div>
       </div>
 
-      {/* Race Info Cards */}
       <div className="px-6 space-y-4">
-        {/* Goal Card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -158,7 +151,6 @@ export function AdidasRaceDetailsPage({ onNavigate, onBack }: AdidasRaceDetailsP
           </Card>
         </motion.div>
 
-        {/* Description */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -176,7 +168,6 @@ export function AdidasRaceDetailsPage({ onNavigate, onBack }: AdidasRaceDetailsP
           </Card>
         </motion.div>
 
-        {/* Challenge Details */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -219,7 +210,6 @@ export function AdidasRaceDetailsPage({ onNavigate, onBack }: AdidasRaceDetailsP
           </Card>
         </motion.div>
 
-        {/* Let's Go Button */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -249,7 +239,6 @@ export function AdidasRaceDetailsPage({ onNavigate, onBack }: AdidasRaceDetailsP
         </motion.div>
       </div>
 
-      {/* Registration Dialog */}
       <Dialog open={showRegistrationDialog} onOpenChange={setShowRegistrationDialog}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
@@ -282,7 +271,6 @@ export function AdidasRaceDetailsPage({ onNavigate, onBack }: AdidasRaceDetailsP
         </DialogContent>
       </Dialog>
 
-      {/* Join Challenge Modal */}
       <JoinChallengeModal
         isOpen={isJoinModalOpen}
         onClose={() => setIsJoinModalOpen(false)}
