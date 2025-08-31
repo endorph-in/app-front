@@ -31,39 +31,6 @@ export function WelcomePage({ onStartNow }: WelcomePageProps) {
   }, [])
   return (
     <div className="relative min-h-screen flex flex-col bg-black overflow-hidden">
-      {/* Status Bar Simulation */}
-      <div className="relative z-20 flex justify-between items-center px-6 pt-4 pb-2">
-        <div className="text-sm font-medium text-white">9:41</div>
-        <div className="flex items-center gap-1">
-          <div className="flex gap-1">
-            <div className="w-1 h-3 bg-white rounded-full"></div>
-            <div className="w-1 h-3 bg-white rounded-full"></div>
-            <div className="w-1 h-3 bg-white rounded-full"></div>
-            <div className="w-1 h-3 bg-gray-400 rounded-full"></div>
-          </div>
-          <div className="w-4 h-3 ml-1">
-            <svg viewBox="0 0 16 12" fill="none" className="w-full h-full">
-              <path
-                d="M1 5.5C1 3.01472 3.01472 1 5.5 1H10.5C12.9853 1 15 3.01472 15 5.5V6.5C15 8.98528 12.9853 11 10.5 11H5.5C3.01472 11 1 8.98528 1 6.5V5.5Z"
-                stroke="white"
-                strokeWidth="1"
-              />
-              <path
-                d="M13 4V8C13 8.55228 13.4477 9 14 9C14.5523 9 15 8.55228 15 8V4C15 3.44772 14.5523 3 14 3C13.4477 3 13 3.44772 13 4Z"
-                fill="white"
-              />
-            </svg>
-          </div>
-          <div className="w-6 h-3 ml-1">
-            <svg viewBox="0 0 24 12" fill="none" className="w-full h-full">
-              <rect x="1" y="2" width="20" height="8" rx="2" stroke="white" strokeWidth="1" />
-              <rect x="22" y="4" width="1" height="4" rx="0.5" fill="white" />
-              <rect x="2" y="3" width="16" height="6" rx="1" fill="white" />
-            </svg>
-          </div>
-        </div>
-      </div>
-
       {/* Top right Endorphins logo */}
       <div className="absolute top-16 right-6 z-20">
         <motion.div

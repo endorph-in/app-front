@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Montserrat } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
+import { RainbowKitProvider } from "../components/providers/RainbowKitProvider"
 import "./globals.css"
 
 const montserrat = Montserrat({
@@ -29,7 +30,9 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Michroma:wght@400&display=swap" rel="stylesheet" />
       </head>
       <body className={`${montserrat.variable} font-michroma antialiased`}>
-        <Suspense fallback={null}>{children}</Suspense>
+        <RainbowKitProvider>
+          <Suspense fallback={null}>{children}</Suspense>
+        </RainbowKitProvider>
         <Analytics />
       </body>
     </html>

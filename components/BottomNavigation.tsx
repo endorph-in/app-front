@@ -15,6 +15,10 @@ export function BottomNavigation({ currentPage, onNavigate }: BottomNavigationPr
     if (page === "aleph-race-details" || page === "adidas-race-details") {
       return "home"
     }
+    // Páginas que no corresponden a ninguna pestaña de navegación
+    if (page === "docs" || page === "welcome") {
+      return "none"
+    }
     return page
   }
   
@@ -28,13 +32,15 @@ export function BottomNavigation({ currentPage, onNavigate }: BottomNavigationPr
 
   const getIndicatorPosition = () => {
     const activeIndex = navItems.findIndex(item => item.id === activeNavItem)
-    if (activeIndex === -1) return { left: "0%", width: "16%" }
-    if (activeIndex === 0) return { left: "2%", width: "18%" }
-    if (activeIndex === 1) return { left: "21.5%", width: "18%" }  
-    if (activeIndex === 2) return { left: "62%", width: "18%" }   
-    if (activeIndex === 3) return { left: "81%", width: "18%" }
+    // Si no hay pestaña activa, ocultar el indicador
+    if (activeIndex === -1) return { left: "0%", width: "0%", opacity: 0 }
     
-    return { left: "0%", width: "16%" }
+    if (activeIndex === 0) return { left: "2%", width: "18%", opacity: 1 }
+    if (activeIndex === 1) return { left: "21.5%", width: "18%", opacity: 1 }  
+    if (activeIndex === 2) return { left: "62%", width: "18%", opacity: 1 }   
+    if (activeIndex === 3) return { left: "81%", width: "18%", opacity: 1 }
+    
+    return { left: "0%", width: "0%", opacity: 0 }
   }
 
   return (
