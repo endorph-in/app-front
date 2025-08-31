@@ -12,7 +12,7 @@ interface ChallengeRewardsInfoProps {
 
 export function ChallengeRewardsInfo({ 
   aprRate = "4.4%", 
-  pointsType = "endorphines points",
+  pointsType = "endorphins points",
   description = "Users that do not complete the goal will be slashed.",
   className = ""
 }: ChallengeRewardsInfoProps) {

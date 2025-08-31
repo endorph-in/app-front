@@ -8,6 +8,7 @@ import { GoalsPage } from "./components/GoalsPage"
 import { StatsPage } from "./components/StatsPage"
 import { ChallengeDetailPage } from "./components/ChallengeDetailPage"
 import { RaceDetailsPage } from "./components/RaceDetailsPage"
+import { AdidasRaceDetailsPage } from "./components/AdidasRaceDetailsPage"
 import { BottomNavigation } from "./components/BottomNavigation"
 import { PageTransition } from "./components/PageTransition"
 
@@ -64,8 +65,10 @@ export default function App() {
         return <GoalsPage onNavigate={handleNavigate} />
       case "stats":
         return <StatsPage onNavigate={handleNavigate} />
-      case "race-details":
+      case "aleph-race-details":
         return <RaceDetailsPage onNavigate={handleNavigate} onBack={handleBack} />
+      case "adidas-race-details":
+        return <AdidasRaceDetailsPage onNavigate={handleNavigate} onBack={handleBack} />
       default:
         return <WelcomePage onStartNow={handleStartNow} />
     }
@@ -76,7 +79,7 @@ export default function App() {
       <PageTransition pageKey={currentPage} direction={getPageDirection(currentPage)}>
         {renderCurrentPage()}
       </PageTransition>
-      {currentPage !== "welcome" && currentPage !== "race-details" && <BottomNavigation currentPage={currentPage} onNavigate={handleNavigate} />}
+      {currentPage !== "welcome" && <BottomNavigation currentPage={currentPage} onNavigate={handleNavigate} />}
     </div>
   )
 }

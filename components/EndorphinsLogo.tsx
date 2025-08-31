@@ -11,6 +11,6 @@ export function EndorphinsLogo({ size = "md", className = "" }: EndorphinsLogoPr
   }
 
   return (
-    <img src="/endorphines-logo.png" alt="Endorphines" className={`${sizeClasses[size]} ${className} object-contain`} />
+    <img src="/endorphines-logo.png" alt="Endorphins" className={`${sizeClasses[size]} ${className} object-contain`} />
   )
 }

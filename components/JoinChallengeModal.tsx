@@ -25,7 +25,7 @@ export function JoinChallengeModal({ isOpen, onClose, challengeName, onJoinChall
   }
 
   const handleMaxClick = () => {
-    setUsdcAmount("100.0") // Simular balance máximo
+    setUsdcAmount("100.0")
   }
 
   return (
@@ -43,7 +43,7 @@ export function JoinChallengeModal({ isOpen, onClose, challengeName, onJoinChall
         {/* Header */}
         <DialogHeader className="p-6 pb-4">
           <DialogTitle className="text-xl font-montserrat font-medium">
-            Unirse a {challengeName}
+            Join {challengeName}
           </DialogTitle>
         </DialogHeader>
 
