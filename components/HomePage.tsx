@@ -106,13 +106,13 @@ export function HomePage({ onNavigate, onBackToWelcome }: HomePageProps) {
             whileTap={{ scale: 0.98 }}
           >
             <div className="relative h-36">
-              <ImageWithFallback src="/aleph-race-image.jpg" alt="Aleph race runners" className="w-full h-full object-cover" />
+              <ImageWithFallback src="/aleph-race-image.jpg" alt="Aleph Runners " className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-r from-accent/85 via-primary/60 to-transparent"></div>
 
               <div className="absolute inset-0 flex items-center justify-between px-4">
                 <div>
                   <h3 className="text-white font-montserrat font-semibold mb-1 text-lg drop-shadow-md">
-                    Aleph Race
+                    Aleph Run Club
                   </h3>
                   <p className="text-white/90 text-sm font-montserrat drop-shadow-sm">Sponsored pool • 500 molecules</p>
                   <div className="mt-2 flex items-center gap-2">
