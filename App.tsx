@@ -6,6 +6,7 @@ import { HomePage } from "./components/HomePage"
 import { PoolsPage } from "./components/PoolsPage"
 import { GoalsPage } from "./components/GoalsPage"
 import { StatsPage } from "./components/StatsPage"
+import { ChallengeDetailPage } from "./components/ChallengeDetailPage"
 import { BottomNavigation } from "./components/BottomNavigation"
 import { PageTransition } from "./components/PageTransition"
 
@@ -48,6 +49,8 @@ export default function App() {
         )
       case "pools":
         return <PoolsPage onNavigate={handleNavigate} selectedPool={selectedPool} />
+      case "challenge-detail":
+        return <ChallengeDetailPage onNavigate={handleNavigate} challengeId={selectedPool || ""} />
       case "goals":
         return <GoalsPage onNavigate={handleNavigate} />
       case "stats":

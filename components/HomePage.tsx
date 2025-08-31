@@ -105,7 +105,7 @@ export function HomePage({ onNavigate, onBackToWelcome }: HomePageProps) {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            onClick={() => onNavigate("pools", "adidas-run-challenge")}
+            onClick={() => onNavigate("challenge-detail", "adidas-run-challenge")}
             whileHover={{ scale: 1.02, y: -2 }}
             whileTap={{ scale: 0.98 }}
           >
@@ -145,7 +145,7 @@ export function HomePage({ onNavigate, onBackToWelcome }: HomePageProps) {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            onClick={() => onNavigate("pools", "rexona-fitness-challenge")}
+            onClick={() => onNavigate("challenge-detail", "rexona-fitness-challenge")}
             whileHover={{ scale: 1.02, y: -2 }}
             whileTap={{ scale: 0.98 }}
           >
