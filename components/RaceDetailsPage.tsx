@@ -6,7 +6,7 @@ import { Card } from "./ui/card"
 import { Header } from "./Header"
 import { ImageWithFallback } from "./figma/ImageWithFallback"
 import { JoinChallengeModal } from "./JoinChallengeModal"
-import { motion, AnimatePresence } from "motion/react"
+import { motion } from "motion/react"
 import { 
   Users, 
   Clock, 
@@ -43,10 +43,9 @@ export function RaceDetailsPage({ onNavigate, onBack }: RaceDetailsPageProps) {
 
   const handleJoinChallenge = (amount: number) => {
     // Aquí manejarías la lógica de unirse al desafío
-    console.log(`Joining challenge with ${amount} USDC`)
+    console.log(`Joining Aleph Race with ${amount} USDC`)
     setIsRegistered(true)
     setIsJoinModalOpen(false)
-    // Después de unirse exitosamente, podrías navegar o mostrar confirmación
   }
 
   return (
