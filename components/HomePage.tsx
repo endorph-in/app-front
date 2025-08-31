@@ -106,8 +106,8 @@ export function HomePage({ onNavigate, onBackToWelcome }: HomePageProps) {
             whileTap={{ scale: 0.98 }}
           >
             <div className="relative h-36">
-              <ImageWithFallback src="/aleph-race-image.jpg" alt="Aleph Runners " className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-r from-accent/85 via-primary/60 to-transparent"></div>
+              <ImageWithFallback src="/aleph-race-image.jpg" alt="Aleph race runners" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40"></div>
 
               <div className="absolute inset-0 flex items-center justify-between px-4">
                 <div>
