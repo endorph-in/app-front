@@ -41,7 +41,9 @@ export function ChallengeRewardsInfo({
         </div>
         <span className="text-sm font-montserrat" style={{ color: "#A8BF84" }}>Fitness APR</span>
         <span style={{ color: "#A69F94" }}>+</span>
-        <EndorphinsLogo size="sm" className="w-6 h-6" />
+        <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ backgroundColor: "#FFFFFF", padding: "3px" }}>
+          <EndorphinsLogo size="sm" className="w-4 h-4" />
+        </div>
         <span className="text-sm font-montserrat" style={{ color: "#A8BF84" }}>{pointsType}</span>
       </div>
 
